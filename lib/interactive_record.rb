@@ -61,8 +61,8 @@ class InteractiveRecord
   
   def self.find_by(attribute)
     value = attribute.values.first
-    value.class == Fixnum ? value : "'#{value}'"
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = #{value} LIMIT 1"
+    value_for_insert = value.class == Fixnum ? value : "'#{value}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = #{value_for_insert} LIMIT 1"
     DB[:conn].execute(sql)
   end
 end
