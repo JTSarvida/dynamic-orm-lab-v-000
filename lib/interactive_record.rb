@@ -8,5 +8,7 @@ class InteractiveRecord
   end
   
   def self.column_names
-  end
+      DB[:conn].results_as_hash = true 
+      
+      sql = 
 end
