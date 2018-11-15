@@ -61,8 +61,8 @@ class InteractiveRecord
   
   def self.find_by(attribute)
     value = attribute.values.first
-    
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = #{attribute.values.class.first}"
+    insert = value.values_for_insert
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = #{insert}"
     DB[:conn].execute(sql)
   end
 end
