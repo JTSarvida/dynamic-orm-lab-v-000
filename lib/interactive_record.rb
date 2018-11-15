@@ -62,7 +62,7 @@ class InteractiveRecord
   def self.find_by(attribute)
     value = attribute.values.first
     
-    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys} = #{value} LIMIT 1"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys.first} = #{value} LIMIT 1"
     DB[:conn].execute(sql)
   end
 end
